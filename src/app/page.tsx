@@ -1,6 +1,7 @@
 "use client";
 
 import { BsFillMoonFill } from "react-icons/bs";
+import { useState } from "react";
 import {
   AiFillLinkedin,
   AiFillGithub,
@@ -57,40 +58,61 @@ const handleClick = (anchor: string) => () => {
 };
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+
+  const menuHandler = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <main className="bg-yellow-50 px-6 md:px-20 lg:px-50 xl:px-70 min-h-screen">
       <section id="home-section">
-        <nav className="py-40 flex justify-between items-center h-screen w-[50%] fixed top-0 left-0 bg-orange-300 flex-col z-10 sm:relative sm:bg-transparent sm:flex-row sm:py-10 sm:w-full sm:h-min">
-          <h2 className="font-bold text-3xl text-orange-500 cursor-pointer">
-            RMST
-          </h2>
-          <ul className="flex flex-col gap-10 justify-center items-center sm:flex-row ">
-            <li className="cursor-pointer pl-4">
-              <BsFillMoonFill size={"1.5em"} />
-            </li>
-            <li className="ml-5 sm:hidden md:block">
-              <a href="#home" onClick={handleClick("home")}>
-                Home
-              </a>
-            </li>
-            <li className="ml-5 sm:hidden md:block">
-              <a href="#portfolio" onClick={handleClick("portfolio")}>
-                Portfolio
-              </a>
-            </li>
-            <li className="ml-5 sm:hidden md:block">
-              <a
-                href="#"
-                className="bg-black text-white px-5 py-2 rounded-md hover:bg-orange-400  transition-all whitespace-nowrap"
-              >
-                Contact Me
-              </a>
-            </li>
+        <nav className="flex justify-between items-center">
+          <div className="flex-1">
+            <h2 className="font-bold text-3xl text-orange-500 cursor-pointer">
+              RMST
+            </h2>
+          </div>
 
-            <li className="hidden sm:block md:hidden cursor-pointer">
-              <HiMenu size={"2em"} />
-            </li>
-          </ul>
+          <div
+            className={`flex-1 py-40 flex justify-between items-center h-screen ${
+              isOpen ? "w-[50%]" : "w-0 overflow-hidden"
+            } fixed top-0 left-0 bg-orange-300 flex-col z-10 transition-all sm:relative sm:bg-transparent sm:flex-row sm:py-10 sm:w-full sm:h-min`}
+          >
+            <ul className="flex flex-col gap-10 justify-center items-center sm:flex-row ">
+              <li className="ml-5 sm:hidden md:block">
+                <a href="#home" onClick={handleClick("home")}>
+                  Home
+                </a>
+              </li>
+              <li className="ml-5 sm:hidden md:block">
+                <a href="#portfolio" onClick={handleClick("portfolio")}>
+                  Portfolio
+                </a>
+              </li>
+              <li className="ml-5 sm:hidden md:block">
+                <a
+                  href="#"
+                  className="bg-black text-white px-5 py-2 rounded-md hover:bg-orange-400  transition-all whitespace-nowrap"
+                >
+                  Contact Me
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul className="flex justify-end items-center gap-5">
+              <li className="cursor-pointer pl-4">
+                <BsFillMoonFill size={"1.5em"} />
+              </li>
+              <li
+                className="block sm:block md:hidden cursor-pointer"
+                onClick={menuHandler}
+              >
+                <HiMenu size={"2em"} />
+              </li>
+            </ul>
+          </div>
         </nav>
 
         <div className="p-8 text-center">
