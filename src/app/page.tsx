@@ -1,3 +1,5 @@
+"use client";
+
 import { BsFillMoonFill } from "react-icons/bs";
 import {
   AiFillLinkedin,
@@ -5,6 +7,8 @@ import {
   AiFillFacebook,
   AiFillInstagram,
 } from "react-icons/ai";
+
+import { HiMenu } from "react-icons/hi";
 
 import myimage from "../../public/working.png";
 import Image from "next/image";
@@ -41,31 +45,50 @@ const services = [
   },
 ];
 
+const handleClick = (anchor: string) => () => {
+  const id = `${anchor}-section`;
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+};
+
 export default function Home() {
   return (
     <main className="bg-yellow-50 px-6 md:px-20 lg:px-50 xl:px-70 min-h-screen">
-      <section>
-        <nav className="py-10 flex justify-between items-center">
+      <section id="home-section">
+        <nav className="py-40 flex justify-between items-center h-screen w-[50%] fixed top-0 left-0 bg-orange-300 flex-col z-10 sm:relative sm:bg-transparent sm:flex-row sm:py-10 sm:w-full sm:h-min">
           <h2 className="font-bold text-3xl text-orange-500 cursor-pointer">
             RMST
           </h2>
-          <ul className="flex justify-between items-center">
-            <li className="cursor-pointer flex-1">
+          <ul className="flex flex-col gap-10 justify-center items-center sm:flex-row ">
+            <li className="cursor-pointer pl-4">
               <BsFillMoonFill size={"1.5em"} />
             </li>
-            <li className="ml-5 ">
-              <a href="#home">Home</a>
+            <li className="ml-5 sm:hidden md:block">
+              <a href="#home" onClick={handleClick("home")}>
+                Home
+              </a>
             </li>
-            <li className="ml-5">
-              <a href="#portfolio">Portfolio</a>
+            <li className="ml-5 sm:hidden md:block">
+              <a href="#portfolio" onClick={handleClick("portfolio")}>
+                Portfolio
+              </a>
             </li>
-            <li className="ml-5 max-sm:hidden">
+            <li className="ml-5 sm:hidden md:block">
               <a
                 href="#"
-                className="bg-orange-300 px-5 py-2 rounded-md hover:bg-orange-400  transition-all whitespace-nowrap"
+                className="bg-black text-white px-5 py-2 rounded-md hover:bg-orange-400  transition-all whitespace-nowrap"
               >
                 Contact Me
               </a>
+            </li>
+
+            <li className="hidden sm:block md:hidden cursor-pointer">
+              <HiMenu size={"2em"} />
             </li>
           </ul>
         </nav>
@@ -101,7 +124,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section id="portfolio-section">
         <div>
           <div className="flex flex-col justify-center items-center">
             <h2 className="font-bold text-4xl text-orange-500">My Services</h2>
