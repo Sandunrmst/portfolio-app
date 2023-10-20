@@ -18,6 +18,7 @@ import digitalMarketing from "../../public/advetising_icon.png";
 import fronendDev from "../../public/frontend-development.png";
 import graphicDesign from "../../public/graphic-design.png";
 import ServiceCard from "@/components/ServiceCard";
+import { time } from "console";
 
 const services = [
   {
@@ -63,111 +64,125 @@ export default function Home() {
   const menuHandler = () => {
     setIsOpen(!isOpen);
   };
+
+  const [darkmode, setDarkmode] = useState<boolean>(false);
+  console.log(darkmode);
+
   return (
-    <main className="bg-yellow-50 px-6 md:px-20 lg:px-50 xl:px-70 min-h-screen">
-      <section id="home-section">
-        <nav className="flex justify-between items-center py-5">
-          <div className="w-[40%]">
-            <h2 className="font-bold text-3xl text-orange-500 cursor-pointer">
-              RMST
-            </h2>
-          </div>
+    //Set dark mode
+    <div className={`${darkmode ? "dark" : ""}`}>
+      <main className="bg-yellow-50 px-6 md:px-20 lg:px-50 xl:px-70 min-h-screen dark:bg-black">
+        <section id="home-section">
+          <nav className="flex justify-between items-center py-5">
+            <div className="w-[40%]">
+              <h2 className="font-bold text-3xl text-orange-500 cursor-pointer">
+                RMST
+              </h2>
+            </div>
 
-          <div
-            className={`flex-1 py-40 flex justify-between items-center h-screen ${
-              isOpen ? "w-[50%]" : "w-0 overflow-hidden"
-            } fixed top-0 left-0 bg-orange-300 flex-col z-10 transition-all sm:relative sm:bg-transparent sm:flex-row sm:py-10 sm:w-full sm:h-min`}
-          >
-            <ul className="flex flex-col gap-10 md:gap-2 md:justify-center sm:justify-start items-center sm:flex-row">
-              <li className="ml-5 sm:hidden md:block">
-                <a href="#Services" onClick={handleClick("Services")}>
-                  Services
-                </a>
-              </li>
-              <li className="ml-5 sm:hidden md:block">
-                <a href="#portfolio" onClick={handleClick("portfolio")}>
-                  Portfolio
-                </a>
-              </li>
-              <li className="ml-5 sm:hidden md:block">
-                <a
-                  href="#"
-                  className="bg-black text-white px-5 py-2 rounded-md hover:bg-orange-400  transition-all whitespace-nowrap"
+            <div
+              className={`flex-1 py-40 flex justify-between items-center h-screen ${
+                isOpen ? "w-[50%]" : "w-0 overflow-hidden"
+              } fixed top-0 left-0 bg-orange-300 dark:bg-black flex-col z-10 transition-all sm:relative sm:bg-transparent sm:flex-row sm:py-10 sm:w-full sm:h-min`}
+            >
+              <ul className="flex flex-col gap-10 md:gap-2 md:justify-center sm:justify-start items-center sm:flex-row dark:text-white">
+                <li className="ml-5 sm:hidden md:block">
+                  <a href="#Services" onClick={handleClick("Services")}>
+                    Services
+                  </a>
+                </li>
+                <li className="ml-5 sm:hidden md:block">
+                  <a href="#portfolio" onClick={handleClick("portfolio")}>
+                    Portfolio
+                  </a>
+                </li>
+                <li className="ml-5 sm:hidden md:block">
+                  <a
+                    href="#"
+                    className="bg-black text-white px-5 py-2 rounded-md hover:bg-orange-400 dark:bg-orange-400 transition-all whitespace-nowrap"
+                  >
+                    Contact Me
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul className="flex justify-end items-center gap-5">
+                <li
+                  className="cursor-pointer pl-4 dark:text-white"
+                  onClick={() => setDarkmode(!darkmode)}
                 >
-                  Contact Me
-                </a>
-              </li>
-            </ul>
-          </div>
+                  <BsFillMoonFill size={"1.5em"} />
+                </li>
+                <li
+                  className="block sm:block md:hidden cursor-pointer dark:text-white"
+                  onClick={menuHandler}
+                >
+                  <HiMenu size={"2em"} />
+                </li>
+              </ul>
+            </div>
+          </nav>
 
+          <div className="p-8 text-center">
+            <h1 className="text-4xl text-orange-500 font-bold md:text-6xl lg:text-7xl">
+              My Personal WebSite
+            </h1>
+            <h3 className="text-2xl py-4 ">
+              Freelancer , Web-Developer, UI/UX Designer
+            </h3>
+
+            <div className="flex justify-center mb-4">
+              <p className="text-slate-500 max-w-4xl dark:text-slate-300">
+                As a software engineer, I bring a unique blend of technical
+                expertise and problem-solving skills to the table. My experience
+                in designing, coding, testing, and maintaining software systems
+                has equipped me with a deep understanding of complex system
+                architectures and algorithms.
+              </p>
+            </div>
+
+            <div className="flex text-4xl justify-center gap-7">
+              <AiFillLinkedin />
+              <AiFillGithub />
+              <AiFillFacebook />
+              <AiFillInstagram />
+            </div>
+
+            <div className="flex justify-center my-8">
+              <Image src={myimage} alt="myimage" />
+            </div>
+          </div>
+        </section>
+
+        <section id="Services-section">
           <div>
-            <ul className="flex justify-end items-center gap-5">
-              <li className="cursor-pointer pl-4">
-                <BsFillMoonFill size={"1.5em"} />
-              </li>
-              <li
-                className="block sm:block md:hidden cursor-pointer"
-                onClick={menuHandler}
-              >
-                <HiMenu size={"2em"} />
-              </li>
-            </ul>
-          </div>
-        </nav>
+            <div className="flex flex-col justify-center items-center">
+              <h2 className="font-bold text-4xl text-orange-500">
+                My Services
+              </h2>
+              <p className="text-slate-700 max-w-4xl text-center dark:text-slate-300">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Tempore in nihil, quidem magni facere assumenda cupiditate
+                doloremque adipisci, rerum quas beatae, vitae iste minus
+                similique!
+              </p>
+            </div>
 
-        <div className="p-8 text-center">
-          <h1 className="text-4xl text-orange-500 font-bold md:text-6xl lg:text-7xl">
-            My Personal WebSite
-          </h1>
-          <h3 className="text-2xl py-4 ">
-            Freelancer , Web-Developer, UI/UX Designer
-          </h3>
-
-          <div className="flex justify-center mb-4">
-            <p className="text-slate-500 max-w-4xl">
-              As a software engineer, I bring a unique blend of technical
-              expertise and problem-solving skills to the table. My experience
-              in designing, coding, testing, and maintaining software systems
-              has equipped me with a deep understanding of complex system
-              architectures and algorithms.
-            </p>
+            <div className="mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-14">
+              {services.map((item) => (
+                <ServiceCard
+                  key={item.title}
+                  img={item.img}
+                  title={item.title}
+                  description={item.description}
+                />
+              ))}
+            </div>
           </div>
-
-          <div className="flex text-4xl justify-center gap-7">
-            <AiFillLinkedin />
-            <AiFillGithub />
-            <AiFillFacebook />
-            <AiFillInstagram />
-          </div>
-
-          <div className="flex justify-center my-8">
-            <Image src={myimage} alt="myimage" />
-          </div>
-        </div>
-      </section>
-
-      <section id="Services-section">
-        <div>
-          <div className="flex flex-col justify-center items-center">
-            <h2 className="font-bold text-4xl text-orange-500">My Services</h2>
-            <p className="text-slate-700 max-w-4xl text-center">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
-              in nihil, quidem magni facere assumenda cupiditate doloremque
-              adipisci, rerum quas beatae, vitae iste minus similique!
-            </p>
-          </div>
-
-          <div className="mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-14">
-            {services.map((item) => (
-              <ServiceCard
-                img={item.img}
-                title={item.title}
-                description={item.description}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
   );
 }
