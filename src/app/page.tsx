@@ -58,7 +58,7 @@ const handleClick = (anchor: string) => () => {
 };
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const menuHandler = () => {
     setIsOpen(!isOpen);
@@ -66,8 +66,8 @@ export default function Home() {
   return (
     <main className="bg-yellow-50 px-6 md:px-20 lg:px-50 xl:px-70 min-h-screen">
       <section id="home-section">
-        <nav className="flex justify-between items-center">
-          <div className="flex-1">
+        <nav className="flex justify-between items-center py-5">
+          <div className="w-[40%]">
             <h2 className="font-bold text-3xl text-orange-500 cursor-pointer">
               RMST
             </h2>
@@ -78,10 +78,10 @@ export default function Home() {
               isOpen ? "w-[50%]" : "w-0 overflow-hidden"
             } fixed top-0 left-0 bg-orange-300 flex-col z-10 transition-all sm:relative sm:bg-transparent sm:flex-row sm:py-10 sm:w-full sm:h-min`}
           >
-            <ul className="flex flex-col gap-10 justify-center items-center sm:flex-row ">
+            <ul className="flex flex-col gap-10 md:gap-2 md:justify-center sm:justify-start items-center sm:flex-row">
               <li className="ml-5 sm:hidden md:block">
-                <a href="#home" onClick={handleClick("home")}>
-                  Home
+                <a href="#Services" onClick={handleClick("Services")}>
+                  Services
                 </a>
               </li>
               <li className="ml-5 sm:hidden md:block">
@@ -146,7 +146,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="portfolio-section">
+      <section id="Services-section">
         <div>
           <div className="flex flex-col justify-center items-center">
             <h2 className="font-bold text-4xl text-orange-500">My Services</h2>
