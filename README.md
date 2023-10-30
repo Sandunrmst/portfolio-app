@@ -1,2 +1,2 @@
 # portfolio-app
-Next.js - Tailwindcss - React
+Next.js - Tailwindcss - React.
